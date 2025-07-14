@@ -13,9 +13,7 @@ import com.app.dto.study.Product;
 @Controller
 public class ViewData01Controller {
 
-	
 	/*
-	
 	FE 			---> BE서버(Spring)				---> DB
 	외부BE			 return "view이름"	
 	(html/css/js)	<--- view 자원(jsp)
@@ -98,25 +96,20 @@ public class ViewData01Controller {
 		// .../viewData6?searchKeyword=커피
 		System.out.println("/viewData6 요청");
 		
-		//요청 들어온 파라미터
-		//request.getParameter(null);
-		
-		//view Data 전달
-		//request.setAttribute(key, value);
-		
 		String searchKeyword = request.getParameter("searchKeyword");
 		
 		request.setAttribute("store", "오늘카페");
 		request.setAttribute("menu", "골라보세요~");
 		
-		if(searchKeyword.equals("커피")) {
+		// NullPointerException 방지를 위해 null 체크 추가 (수정된 부분)
+		if(searchKeyword != null && searchKeyword.equals("커피")) {
 			Product product = new Product();
 			product.setId("cfe");
 			product.setName("아메리카노");
 			product.setPrice(2500);
 			
 			request.setAttribute("product", product);
-		} else {
+		} else { // searchKeyword가 null이거나 "커피"가 아닌 경우
 			Product product = new Product();
 			product.setId("tea");
 			product.setName("허브티");
@@ -132,31 +125,21 @@ public class ViewData01Controller {
 	
 	@GetMapping("/viewData7")
 	public String viewData7(Model model, @RequestParam(required = false) String searchKeyword) {
-											//HttpServletRequest request
-											//Map<String,String> paramMap
-		// .../viewData6?searchKeyword=커피
+		// .../viewData7?searchKeyword=커피
 		System.out.println("/viewData7 요청");
-		
-		//요청 들어온 파라미터
-		//request.getParameter(null);
-		
-		//view Data 전달
-		//request.setAttribute(key, value);
-		
-		//String searchKeyword = request.getParameter("searchKeyword");
-		//String searchKeyword = paramMap.get("searchKeyword");
 		
 		model.addAttribute("store", "오늘카페");
 		model.addAttribute("menu", "골라보세요~");
 		
-		if(searchKeyword.equals("커피")) {
+		// NullPointerException 방지를 위해 null 체크 추가 (수정된 부분)
+		if(searchKeyword != null && searchKeyword.equals("커피")) {
 			Product product = new Product();
 			product.setId("cfe");
 			product.setName("아메리카노");
 			product.setPrice(2500);
 			
 			model.addAttribute("product", product);
-		} else {
+		} else { // searchKeyword가 null이거나 "커피"가 아닌 경우
 			Product product = new Product();
 			product.setId("tea");
 			product.setName("허브티");
@@ -170,15 +153,3 @@ public class ViewData01Controller {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
