@@ -30,6 +30,13 @@ public class RoomController {
 		//화면에 보여줄 호실 데이터 -> view 데이터 전달
 		model.addAttribute("roomList", roomList);
 
+		Room
+		
+		Room r = new Room();
+		r.setFloor(0);
+		
+		
+		
 		return "room/rooms";
 	}
 }
