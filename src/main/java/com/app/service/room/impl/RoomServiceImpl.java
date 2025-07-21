@@ -30,6 +30,7 @@ public class RoomServiceImpl implements RoomService{
 	
 	@Override
 	public int saveRoom(Room room) {
+		return 0;
 		//room 정보 저장해라 ->DAO
 		
 	}
