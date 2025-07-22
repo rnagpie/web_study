@@ -10,29 +10,60 @@ import com.app.dto.room.Room;
 import com.app.service.room.RoomService;
 
 @Service
-public class RoomServiceImpl implements RoomService{
+public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	RoomDAO roomDAO;
 	
+	/*
+	//생성자를 통한 주입
+	public RoomServiceImpl(RoomDAO roomDAO) {
+		this.roomDAO = roomDAO;
+	}
+	*/
 	
 	
+	/*
+	//setter 메소드를 통한 주입
+	public void setRoomDAO(RoomDAO roomDAO) {
+		this.roomDAO = roomDAO;
+	}
+	*/
+	
+	
+
 	@Override
 	public List<Room> findRoomList() {
 		
-		//서비스 로직 ....
-		//	....
+		System.out.println("[Service] 호출 findRoomList");
 		
-		// DAO를 활용해서, 실제 데이터 가져오기
+		//서비스 로직 ... 
+		// ...
+		// DAO 를 활용해서, 실제 데이터 가져오기
 		List<Room> roomList = roomDAO.findRoomList();
+		
 		return roomList;
 	}
-	
+
 	@Override
 	public int saveRoom(Room room) {
-		return 0;
-		//room 정보 저장해라 ->DAO
 		
+		//room 정보 저장해라~ -> DAO
+		int result = roomDAO.saveRoom(room);
+		
+		return result;
 	}
 
+
+	@Override
+	public Room findRoomByRoomId(int roomId) {
+		Room room = roomDAO.findRoomByRoomId(roomId);
+		return null;
+	}
+	@Override
+	public int removeRoom(int roomId) {
+		int result =
+	}
+	
+		
 }
