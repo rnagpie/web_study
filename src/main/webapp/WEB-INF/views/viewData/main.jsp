@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>메인 페이지</h1>
-	<button type="button" onclick="location.href='customer/signup'">회원가입</button>
+	<button>회원가입</button>
 </body>
 </html>

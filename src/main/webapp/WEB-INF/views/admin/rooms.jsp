@@ -26,8 +26,8 @@
 
 				</c:choose>
 			</a>
-
-			<button type="button" onClick="location.href/admin/removeRoom?roomId${room.roomId}">삭제하기</button>
+	<button type="button" onClick="location.href/admin/removeRoom?roomId${room.roomId}">삭제하기</button>
+	<button type="button" onClick="removeRoom${room.roomId}">삭제하기</button>	
 		</p>
 	</c:forEach>
 	<script>
@@ -35,6 +35,13 @@
 	btn_registerRoom.addEventListener('click',()=>{
 		location.href = "/admin/registerRoom";
 	})
+	
+	function removeRoom(){
+	
+		if(confirm("정말 삭제하시겠습니까?"))
+		location.href='/admin/removeRoom?roomId=' + roomId;
+		
+	}
 	</script>
 </body>
 </html>

@@ -60,6 +60,31 @@ public class AdminController {
 		return "admin/rooms";		
 	}
 	
+	//roomId 식별자로 구분해서, 하나의 객실에 대한 상세정보 페이지
+	@GetMapping("/admin/room/{roomId}")
+	public String room(@PathVariable String roomId, Model model) {
+		
+		Room room = roomService.findRoomByRoomId(Integer.parseInt(roomId));
+		model.addAttribute("room", room);
+		
+		return "admin/room";
+	}
+	
+	
+	// /admin/removeRoom?roomId=2
+	@GetMapping("/admin/removeRoom")
+	public String removeRoom(HttpServletRequest request) {
+		
+		String roomId = request.getParameter("roomId");
+		
+		int result = roomService.removeRoom(Integer.parseInt(roomId));
+		
+		//if(result > 0) 
+		
+		return "redirect:/admin/rooms";	
+	}
+	
+	
 	
 	//관리자가 사용자계정관리 -> 사용자 계정을 추가
 	@GetMapping("/admin/users/add")
@@ -104,18 +129,15 @@ public class AdminController {
 	}
 	
 	
-	@GetMapping("/admin/room/{roomId}")
-	public String room(@PathVariable String roomId, Model model) {
-		
-		Room room = roomService.findRoomByRoomId(Integer.parseInt(roomId));
-		model.addAttribute("room",room);
-		
-		return "admin/room";
-	}
-
-	@GetMapping("/admin/removeRoom")
-	public String removeRoom(HttpServletRequest request) {
-		String roomID =request.getParameter(removerRoom)
-	}
-	
 }
+
+
+
+
+
+
+
+
+
+
+
