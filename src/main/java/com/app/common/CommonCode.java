@@ -7,6 +7,7 @@ public interface CommonCode {
 	//User -- 상수형 단어는 전부 대문자
 	public static final String USER_USERTYPE_CUSTOMER = "CUS";
 	public static final String USER_USERTYPE_ADMIN = "ADM";
+	public static final String USER_USERTYPE_COSTOMER = null;
  	
 	//Room
 	public String ROOM_VIEWTYPE_OCEAN ="OCN";
