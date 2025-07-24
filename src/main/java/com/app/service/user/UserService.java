@@ -18,4 +18,5 @@ public interface UserService {
 	public User checkUserLogin(User user);
 
 	int modifyUserPw(User user);
+	int modifyUser(User user);
 }
