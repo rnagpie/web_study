@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -164,6 +162,18 @@ public class AdminController {
 	public String addUserAction(User user) {
 		
 		System.out.println(user);
+		
+		
+		//서버에서 Insert 처리전에 완료
+		
+		if(user.getId() == null || user.getId().trim()== "") {
+			return "admin/addUser";
+		}
+ 		
+		if(user.getId().length() <2 || user.getId().length() > 15) {
+			return "admin/addUser";
+		}
+		
 		
 		//관리자가 사용자 계정을 추가!!!
 		//사용자 계정이니까 userType "CUS" 여야 한다!! 전제조건! 로직!
