@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>		
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>		
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,43 +9,50 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.error-msg {
-		color: red;
-	}
+.error-msg {
+	color: red;
+}
 </style>
 </head>
 <body>
 	<h1>signup 회원가입 페이지</h1>
-	
-	<form action="/customer/signup" method="post">	
+
+	<form action="/customer/signup" method="post">
 		아이디 : <input type="text" name="id" id="inputId" value="${user.id}"><br>
 		<spring:hasBindErrors name="user">
 			<c:if test="${errors.hasFieldErrors('id')}">
 				<p class="error-msg">아이디 필수 입력입니다.</p>
-				<p class="error-msg">${errors.getFieldError('id').defaultMessage} </p>
-			</c:if>			
+				<p class="error-msg">${errors.getFieldError('id').defaultMessage}
+				</p>
+			</c:if>
 		</spring:hasBindErrors>
-		
+		<c:if test="${userValidError.id != null}">
+			<p class="error-msg">${userValidError.id }</p>
+		</c:if>
 		<button type="button" id="btn_checkDupId">중복체크</button>
 		<p id="checkDupIdMsg"></p>
-		
-		비번 : <input type="password" name="pw"><br>
-		비밀번호확인 : <input type="password"><br>
+
+		비번 : <input type="password" name="pw"><br> 비밀번호확인 : <input
+			type="password"><br>
 		<spring:hasBindErrors name="user">
 			<c:if test="${errors.hasFieldErrors('pw')}">
 				<p class="error-msg">비밀번호 길이 8~12 입력입니다.</p>
-				<p class="error-msg">${errors.getFieldError('pw').defaultMessage} </p>
-			</c:if>			
+				<p class="error-msg">${errors.getFieldError('pw').defaultMessage}
+				</p>
+			</c:if>
 		</spring:hasBindErrors>
-		
-		
-		
+
+
+
 		이름 : <input type="text" name="name" value="${user.name}"><br>
-		
+
 		<button type="submit">가입하기</button>
 	</form>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+		integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		const btn_checkDupId = document.getElementById('btn_checkDupId');
 		const p_checkDupIdMsg = document.getElementById('checkDupIdMsg');
